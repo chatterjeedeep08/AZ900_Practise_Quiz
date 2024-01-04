@@ -3,17 +3,22 @@ import DataContext from '../context/dataContext';
 
 const Quiz = () => {
     const { showQuiz, question, quizs, checkAnswer, correctAnswer,
-            selectedAnswer,questionIndex, nextQuestion, showTheResult }  = useContext(DataContext);
+            selectedAnswer,questionIndex, nextQuestion, showTheResult,marks,Timer }  = useContext(DataContext);
 
     return (
         <section className="bg-dark text-white" style={{ display: `${showQuiz ? 'block' : 'none'}` }}>
+            <div className="container">
+                <h1 className='fw-bold text-center mb-4'>AZ 900 Practice Questions</h1>
+                <h3 className='fw-bold text-center mb-4'>Question {questionIndex + 1}</h3>
+                <h3 className='fw-bold text-center mb-4'>Score: {marks}</h3>
+                <h3 className='fw-bold text-center mb-4'>Time: {Math.floor(Timer/3600)} hr, {Math.floor(Timer/60)} mins, {Timer%60} sec</h3>
+            </div>
             <div className="container">
                 <div className="row vh-100 align-items-center justify-content-center">
                     <div className="col-lg-8">
                         <div className="card p-4" style={{ background: '#3d3d3d', borderColor: '#646464' }}>
                             <div className="d-flex justify-content-between gap-md-3">
-                                <h5 className='mb-2 fs-normal lh-base'>{question?.question}</h5>
-                                <h5 style={{ color: '#60d600', width: '100px', textAlign: 'right' }}>{quizs.indexOf(question) + 1} / {quizs?.length}</h5>
+                                <h5 className='mb-2 fs-normal lh-base' style={{color: '#fff'}}>{question?.question}</h5>
                             </div>
                             <div>
                                 {
